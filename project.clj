@@ -9,7 +9,8 @@
             [lein-cljsbuild "1.1.7"]]
 
   :doo {:build "test"
-        :paths {:karma "./node_modules/karma/bin/karma"}}
+        :paths {:karma    "./node_modules/karma/bin/karma"
+                :phantom  "./node_modules/phantomjs/bin/phantomjs"}}
   :jvm-opts ["-Xmx1g"]
   :cljsbuild {:builds
               [{:id           "browser-test"
