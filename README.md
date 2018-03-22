@@ -37,7 +37,9 @@ the
 you want:
 
 ```bash
-$CMD npm install karma karma-chrome-launcher karma-safari-launcher karma-cljs-test --save-dev
+# note:  type 'phantomjs', not 'phantom'
+> npm install karma  karma-chrome-launcher  karma-safari-launcher  \
+              karma-cljs-test  phantomjs  --save-dev
 ```
 
 ## Running
@@ -45,7 +47,9 @@ $CMD npm install karma karma-chrome-launcher karma-safari-launcher karma-cljs-te
 Within this directory, let's run the tests (using an auto-tester):
 
 ```bash
-$CMD lein doo chrome browser-test
+> lein doo chrome   browser-test
+> lein doo safari   browser-test
+> lein doo phantom  browser-test   # note:  not 'phantomjs'
 ```
 
 Touch/resave one of the files under test and watch it run the
