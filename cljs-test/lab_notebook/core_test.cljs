@@ -9,7 +9,7 @@
 
 (deftest ajax-get-test
   (async done
-         (ajax-get "http://www.lispcast.com/"
-                   (fn [response]
-                     (is (= 200 (:status response)))
-                     (done)))))
+    (ajax-get "http://www.lispcast.com/"
+      (fn [response]
+        (is (= 200 (:status response)))
+        (done)))))
