@@ -4,7 +4,10 @@
   :license {:name "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
             :url  "http://creativecommons.org/publicdomain/zero/1.0/"}
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.946"]]
+                 [org.clojure/clojurescript "1.9.946"]
+                 [org.clojure/core.async "0.4.474"]
+                 [cljs-http "0.1.44"]
+                ]
   :plugins [[lein-doo "0.1.8"]
             [lein-cljsbuild "1.1.7"]]
 

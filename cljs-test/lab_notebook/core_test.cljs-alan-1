@@ -1,0 +1,48 @@
+(ns lab-notebook.core-test
+  (:require
+    [cljs-http.client :as http]
+    [cljs.core.async :refer [go <!]]
+    [lab-notebook.core :as core]
+    [cljs.test :refer-macros [async deftest is testing]]
+    )
+  (:require-macros [cljs.core.async.macros :refer [go]])
+  (:import goog.net.XhrIo))
+
+(deftest t-000
+ ;(enable-console-print!)
+  (is (= 3 (+ 1 2)))
+ ;(println "t-000")
+  )
+
+(deftest ajax-get-test
+ ;(enable-console-print!)
+  (async done
+    (core/ajax-get "http://www.lispcast.com/"
+                   (fn [response]
+                     (let [stat (:status response)]
+                       (is (= 200 stat))
+                      ;(println "stat=" stat)
+                       (done))))))
+
+#_(deftest t-gql
+  (enable-console-print!)
+  (println "call - before")
+  (async/go
+    (let [response (async/<!! (http/post
+                                "https://www.GraphQLHub.com/graphql"
+                                {:with-credentials? false
+                                 :headers           {"content-type" "application/graphql"}
+                                 :body              "{graphQLHub hn {topStories(limit: 3) {title url timeISO by {id} kids(limit: 2) {timeISO by {id} text}}}}"
+                                 }))]
+      (println "response=" response) ))
+  (println "call - after"))
+
+#_(deftest t-google
+  (async done
+    (println "call google - before")
+    (go
+      (let [response (pr-str (into {} (<! (http/get "http://www.google.com"))))]
+        (is (< 1 (count (:content response))))
+        (println "response=" response)))
+    (println "call google - after")
+    (done)))
